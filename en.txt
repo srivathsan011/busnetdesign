@@ -1,0 +1,39 @@
+en
+conf t
+hostname Mlt-SW2
+line console 0
+password cisco 
+login 
+exit
+
+enable password cisco
+no ip domain-lookup
+banner motd #NO Unauthorised Access!!!#
+service password-encryption
+do wr
+
+
+en
+conf t
+hostname CORE-R2
+line console 0
+password cisco 
+login 
+exit
+
+enable password cisco
+no ip domain-lookup
+banner motd #NO Unauthorised Access!!!#
+service password-encryption
+do wr
+
+ip domain name cisco.net
+username admin password cisco 
+crypto key generate rsa
+1024 
+line vty 0 15 
+login local 
+transport input ssh
+exit 
+
+do wr
